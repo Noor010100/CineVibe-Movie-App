@@ -10,27 +10,30 @@ const Header = ({ data }) => {
                         data.backdrop_path || data.profile_path
                       })`,
         backgroundSize: "cover",
-        backgroundPosition: "top 10%",
+        backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
-        height: "100%",
-        width: "100%",
       }}
-      className="w-full h-[50vh] flex flex-col justify-end items-start p-[5%]"
+      className="w-full h-[60vh] md:h-[50vh] flex flex-col justify-end items-start p-4 md:p-[5%] relative"
     >
-      <h1 className="w-[70%] text-4xl text-white font-black ">
+      <h1 className="text-2xl md:text-4xl text-white font-black w-full md:w-[70%]">
         {data.name || data.title || data.original_name || data.original_title}
       </h1>
-      <p className="w-[70%] mt-3 text-zinc-400">
-        {data.overview.slice(0, 200)}...
-        <Link to={`/${data.media_type}/details/${data.id}`} className="text-[#6556CD]">more</Link>
+      <p className="text-sm md:text-base text-zinc-400 mt-2 md:mt-3 w-full md:w-[70%]">
+        {data.overview.slice(0, 150)}...
+        <Link to={`/${data.media_type}/details/${data.id}`} className="text-[#6556CD]">
+          more
+        </Link>
       </p>
-      <p className="text-white flex gap-2 ">
+      <p className="text-white flex items-center gap-2 text-sm md:text-base mt-2 md:mt-3">
         <i className="text-[#6556CD] ri-calendar-check-fill"></i>{" "}
         {data.release_date || "No Information"}
         <i className="text-[#6556CD] ri-movie-2-fill"></i>{" "}
         {data.media_type.toUpperCase()}
       </p>
-      <Link to={`/${data.media_type}/details/${data.id}/trailer`} className="mt-3 bg-[#6556CD] text-white rounded-lg p-4">
+      <Link
+        to={`/${data.media_type}/details/${data.id}/trailer`}
+        className="mt-3 bg-[#6556CD] text-white rounded-lg p-2 md:p-4 text-sm md:text-base"
+      >
         Watch Trailer
       </Link>
     </div>
