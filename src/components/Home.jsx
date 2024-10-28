@@ -6,6 +6,7 @@ import Header from "../components/partials/Header";
 import HorizontalCards from "../components/partials/HorizontalCards";
 import Dropdown from "../components/partials/Dropdown";
 import Loading from "../components/Loading";
+
 const Home = () => {
   document.title = "CineVibe | Homepage";
   const [wallpaper, setwallpaper] = useState(null);
@@ -45,15 +46,15 @@ const Home = () => {
   }, [category]);
 
   return wallpaper && trending ? (
-    <>
+    <div className="flex flex-col md:flex-row">
       <Sidenav />
-      <div className="w-[80%] h-full overflow-auto overflow-x-hidden">
+      <div className="flex-1 h-full overflow-auto overflow-x-hidden">
         <Topnav />
 
         <Header data={wallpaper} />
 
-        <div className="p-5 flex justify-between">
-          <h1 className="text-3xl font-semibold text-zinc-400 mr-5">Trending</h1>
+        <div className="p-4 md:p-5 flex justify-between items-center">
+          <h1 className="text-2xl md:text-3xl font-semibold text-zinc-400 mr-5">Trending</h1>
           <Dropdown
             title="Filter"
             options={["tv", "movie", "all"]}
@@ -62,7 +63,7 @@ const Home = () => {
         </div>
         <HorizontalCards data={trending} />
       </div>
-    </>
+    </div>
   ) : (
     <Loading />
   );
